@@ -15,11 +15,7 @@ PERSONALIDAD:
 - Respuestas cortas y directas (máximo 3-4 líneas)
 - Siempre ofrece agendar una cita al final si es relevante
 - Usa emojis con moderación (1-2 por mensaje máximo)
-- Habla en español chileno natural
-
-OBJETIVO: Ayudar a los pacientes a resolver dudas y agendar citas.`;
-
-const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
+- Habla en español chileno natural`;
 
 const quickReplies = [
   "¿Qué servicios ofrecen?",
@@ -53,13 +49,9 @@ export default function App() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": API_KEY,
-          "anthropic-version": "2023-06-01",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
           max_tokens: 1000,
